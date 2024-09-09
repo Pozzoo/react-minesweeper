@@ -4,15 +4,16 @@ import GameWindow from "./GameWindow";
 
 const MinesweeperWindow: React.FC = () => {
     const [height, setHeight] = useState(9);
-    const [length, setLenght] = useState(9);
+    const [length, setLength] = useState(9);
 
+    // @ts-ignore
     const [matrix, setMatrix] = useState(Array.from({ length: height }, () => Array.from({ length: length }, () => 0)));
 
     useEffect(() => {
         createMines();
     })
 
-    const updateMatrixValue = (row, col, newValue) => {
+    const updateMatrixValue = (row: number, col: number, newValue: number) => {
         const newMatrix = matrix.map((innerArray, r) =>
             r === row
                 ? innerArray.map((item, c) => (c === col ? newValue : item))
